@@ -122,6 +122,7 @@ class LinkedList {
             node = node.next;
             i++;
         }
+        return -1;
     }
 }
 
