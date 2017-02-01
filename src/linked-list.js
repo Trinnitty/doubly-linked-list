@@ -25,7 +25,7 @@ class LinkedList {
     	}
     	
     	this.length++;
-    	return node;
+    	return this;
     }
 
     head() {
@@ -110,7 +110,21 @@ class LinkedList {
         }
 
     reverse() {
-
+    	var head = this._head;
+    	var current = this._head;
+    	var tail = this._tail;
+    	var tmp;
+    	while(current){
+    		tmp = current.next;
+    		current.next = current.prev;
+    		current.prev = tmp;
+    		if(!tmp){
+    			this._tail = head;
+    			this._head = current;
+    		}
+    		current = tmp;
+    	}
+    	return this;
     }
 
     indexOf(data) {
