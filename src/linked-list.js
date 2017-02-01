@@ -61,13 +61,13 @@ class LinkedList {
 			   currentNode= currentNode.next;
 			   i++;
 			}
-       	
-			first = currentNode.prev;
-			second = currentNode.next;
-			node.prev = first;
-			node.next = second;
-			first.next = node;
-			second.prev = node; 
+       		currentNode.data = node.data;
+			// first = currentNode.prev;
+			// second = currentNode.next;
+			// node.prev = first;
+			// node.next = second;
+			// first.next = node;
+			// second.prev = node; 
 			  		
     	return this;
     }
@@ -109,7 +109,9 @@ class LinkedList {
     	return this;
         }
 
-    reverse() {}
+    reverse() {
+
+    }
 
     indexOf(data) {
     	var node = new Node(data);
