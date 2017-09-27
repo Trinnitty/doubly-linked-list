@@ -54,21 +54,21 @@ class LinkedList {
     insertAt(index, data) {
 
     	var node = new Node(data);
-    	var i = 0, first, second;
+    	var i = 0,
+      	message = {failure: 'Failure: non-existent node in this list.'};
     	var currentNode = this._head;
-      
+
+      if(this.length==0){
+        this._head = node;
+    		this._tail = node;
+      }
+
 			while(i < index){
-			   currentNode= currentNode.next;
+			   currentNode = currentNode.next;
 			   i++;
 			}
-       		currentNode.data = node.data;
-			// first = currentNode.prev;
-			// second = currentNode.next;
-			// node.prev = first;
-			// node.next = second;
-			// first.next = node;
-			// second.prev = node; 
-			  		
+      
+      currentNode.data = node.data;			  		
     	return this;
     }
 
@@ -87,14 +87,22 @@ class LinkedList {
     	this._head.data = null;
     	this._tail.data = null;
     	this.length = 0;
-
+    	return this;
     }
 
     deleteAt(index) {
     	var i = 0, first, second, deletenode;
     	var currentNode = this._head;
-      
-			 while(i != index){
+            if(index===0){
+                this._head.data = null;
+                this._tail.data = null;
+                this.length = 0;
+            }else if (index ===1){
+                    this.head = currentNode.next;
+                    currentNode = deletenode;
+                    deletenode = null;
+                }else {
+			          while(i != index){
 			   currentNode= currentNode.next;
 			   	i++;
 			   }
@@ -105,6 +113,7 @@ class LinkedList {
 			second.prev = first;
 			first.next = second;
 			deletenode = null;
+        }
    		this.length--;
     	return this;
         }
