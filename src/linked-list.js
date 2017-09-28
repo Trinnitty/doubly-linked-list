@@ -40,7 +40,6 @@ class LinkedList {
     	if(this.length < index){
     		alert("Element with this index is not existing.");
     	}else{
-    		
     		var i = 0, data;
     		var node = this._head;
     		while(i != index){
@@ -52,25 +51,23 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-
     	var node = new Node(data);
-    	var i = 0,
-      	message = {failure: 'Failure: non-existent node in this list.'};
+    	var i = 0;
     	var currentNode = this._head;
 
       if(this.length==0){
         this._head = node;
-    		this._tail = node;
+    	this._tail = node;
+      } else {
+      while(i<index){
+        i++;
+        currentNode = currentNode.next;
       }
-
-			while(i < index){
-			   currentNode = currentNode.next;
-			   i++;
-			}
-      
-      currentNode.data = node.data;			  		
-    	return this;
-    }
+      node.prev = currentNode.prev;
+      node.next = currentNode;
+      currentNode.prev.next = node;
+      currentNode.prev = node;
+    }}
 
     isEmpty() {
 
